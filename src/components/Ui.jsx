@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback,useEffect, useRef, useState } from "react";
 import { RetroGrid } from "./RetroGrid";
 import "./RetroGrid.css";
 import logo from "../logo/UI4U.png";
@@ -23,6 +23,11 @@ const Ui = () => {
 
   const [isWaiting, setIsWaiting] = useState(true);
 
+  console.log(isWaiting);
+  console.log(generatedCode);
+  console.log(error);
+  console.log(preview);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsWaiting(false);
@@ -31,7 +36,7 @@ const Ui = () => {
     return () => clearTimeout(timer);
   }, [isLoading]);
 
-  const generateUI = async () => {
+  const generateUI = useCallback(async () => {
     setIsLoading(true);
     setError(null);
 
@@ -82,11 +87,11 @@ const Ui = () => {
     } finally {
       setIsLoading(false);
     }
-  };
+   }, [userPrompt]);
 
   useEffect(() => {
     generateUI();
-  }, [userPrompt]);
+   }, [generateUI]);
 
   useEffect(() => {
     if (isPreview && previewRef.current) {
@@ -111,13 +116,9 @@ const Ui = () => {
       if (generatedJS) {
         try {
           // Validate and prepare the JS code
-          const validatedJS = new Function(
-            `try { ${generatedJS} } catch (e) { console.error(e); }`
-          );
-          script.textContent = `(${validatedJS})();`;
-
+           script.textContent = generatedJS;
           // Append the script
-          previewRef.current.appendChild(script);
+          // previewRef.current.appendChild(script);
         } catch (error) {
           console.error("Error creating function from JS code:", error);
         }
