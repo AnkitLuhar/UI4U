@@ -14,9 +14,9 @@ const Home = () => {
     // Navigate to the Ui component with the prompt
     navigate("/ui", { state: { userPrompt: prompt } });
   };
-  const handlePromptClick = (prompt) => {
-    navigate("/ui", { state: { userPrompt: prompt } });
-  };
+  // const handlePromptClick = (prompt) => {
+  //   navigate("/ui", { state: { userPrompt: prompt } });
+  // };
   const sentence = "What can I help you?";
   const words = sentence.split(" ");
   const variants = {
