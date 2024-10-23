@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  @keyframes move-grid {
+    0% {
+      background-position: 0 0; /* Start position */
+    }
+    100% {
+      background-position: 60px 60px; /* End position to match the background size */
+    }
+  }
+
+  .animate-grid {
+    animation: move-grid 2s linear infinite; /* Faster movement */
+    background-size: 100px 100px; /* Set to match the grid lines */
+  }
+}
