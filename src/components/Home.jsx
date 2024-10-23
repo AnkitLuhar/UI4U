@@ -5,7 +5,7 @@ import logo from "../logo/UI4U.png";
 import { BsArrowRightShort } from "react-icons/bs";
 import { motion } from "framer-motion";
 import { PiArrowElbowRight } from "react-icons/pi";
-import { Link, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 const Home = () => {
   const [prompt, setPrompt] = useState(""); // State for user input
   const navigate = useNavigate(); // For navigation
