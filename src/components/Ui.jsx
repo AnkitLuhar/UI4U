@@ -41,7 +41,8 @@ const Ui = () => {
     setError(null);
 
     try {
-      const response = await fetch("http://localhost:8000/generate-ui", {
+      const response = await fetch("https://ui4u.onrender.com/", {
+      //const response = await fetch("http://localhost:8000/generate-ui", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
